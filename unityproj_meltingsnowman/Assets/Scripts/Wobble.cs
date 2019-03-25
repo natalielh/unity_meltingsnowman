@@ -1,0 +1,39 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Wobble : MonoBehaviour {
+
+	public float ampModX = 0.01f;
+	public float ampModY = 0.01f;
+	public float ampModZ = 0.01f;
+
+	public float pdModX = 1.0f;
+	public float pdModY = 1.0f;
+	public float pdModZ = 1.0f;
+
+	public bool xwobble = false;
+	public bool ywobble = false;
+	public bool zwobble = false;
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		if(xwobble) {
+			transform.Rotate (Vector3.right, ampModX * Mathf.Sin(Time.realtimeSinceStartup * pdModX) * Time.deltaTime);
+		}
+		if (ywobble) {
+			transform.Rotate (Vector3.up, ampModY * Mathf.Sin(Time.realtimeSinceStartup * pdModY) * Time.deltaTime);
+		}
+		if (zwobble) {
+			transform.Rotate (Vector3.forward, ampModZ * Mathf.Sin(Time.realtimeSinceStartup * pdModZ) * Time.deltaTime);
+		}
+
+		// old script for rotation purposes
+		// transform.Rotate (Vector3.forward, ampMod * Mathf.Sin(Time.realtimeSinceStartup) * Time.deltaTime);
+	}
+}
